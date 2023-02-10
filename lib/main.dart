@@ -1,4 +1,4 @@
-import 'package:chat_application/feature/presentation/pages/onboarding/onboarding.dart';
+import 'package:chat_application/feature/presentation/pages/login/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           errorBorder: defaultInputBorder,
         ),
       ),
-      home: const OnboardingScreen(),
+      home: const LoginScreen(),
     );
   }
 }

@@ -1,17 +1,17 @@
 import 'dart:ui';
 
-import 'package:chat_application/feature/presentation/pages/onboarding/widgets/signin_form.dart';
+import 'package:chat_application/feature/presentation/pages/login/widgets/signin_form.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
