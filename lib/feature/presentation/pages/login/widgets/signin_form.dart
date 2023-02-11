@@ -1,3 +1,4 @@
+import 'package:chat_application/feature/presentation/pages/dashboard/dashboard.dart';
 import 'package:chat_application/feature/presentation/pages/login/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +17,15 @@ class _SignInFormState extends State<SignInForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late RiveAnimationController _btnAnimationController;
+  @override
+  void initState() {
+    _btnAnimationController = OneShotAnimation(
+      "active",
+      autoplay: true,
+    );
+    ;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +102,8 @@ class _SignInFormState extends State<SignInForm> {
               btnAnimationController: _btnAnimationController,
               press: () {
                 _btnAnimationController.isActive = true;
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => const Dashboard()));
               },
             ),
             const SizedBox(

@@ -1,4 +1,4 @@
-import 'package:chat_application/feature/presentation/pages/login/onboarding.dart';
+import 'package:chat_application/feature/presentation/pages/login/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
