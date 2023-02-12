@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chat_application/feature/presentation/pages/chat/chat.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -25,7 +26,11 @@ class _DashboardState extends State<Dashboard> {
       body: ListView.builder(itemBuilder: (_, index) {
         return Column(mainAxisSize: MainAxisSize.min, children: [
           ListTile(
-            tileColor: Color.fromRGBO(21, 0, 80, 1.0),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => ChatScreen()));
+            },
+            tileColor: Colors.white10,
             leading: ClipOval(
               child: Image.asset(
                 'assets/avaters/Avatar 4.jpg',
