@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 
 class MessageTile extends StatelessWidget {
   const MessageTile({
@@ -8,14 +9,14 @@ class MessageTile extends StatelessWidget {
   }) : super(key: key);
 
   final String message;
-  final String messageDate;
+  final DateTime messageDate;
 
-  static const _borderRadius = 26.0;
+  static const _borderRadius = 12.0;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, right: 40),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Column(
@@ -33,14 +34,14 @@ class MessageTile extends StatelessWidget {
               ),
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
                 child: Text(message),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                messageDate,
+                Jiffy(messageDate.toLocal()).jm,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,
