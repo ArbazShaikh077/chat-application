@@ -42,6 +42,9 @@ dependencies:
   #For displaying the svgs
   flutter_svg: ^2.0.0+1
 
+  #For formatting the dates
+  jiffy: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

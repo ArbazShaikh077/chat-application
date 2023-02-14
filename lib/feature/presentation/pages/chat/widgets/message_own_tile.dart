@@ -19,40 +19,41 @@ class MessageOwnTile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 40),
       child: Align(
         alignment: Alignment.centerRight,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white10,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(_borderRadius),
-                  topRight: Radius.circular(_borderRadius),
-                  bottomLeft: Radius.circular(_borderRadius),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xffEC87E4), Color.fromRGBO(122, 11, 192, 1.0)]),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(_borderRadius),
+              topRight: Radius.circular(_borderRadius),
+              bottomLeft: Radius.circular(_borderRadius),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Flexible(
                 child: Text(message,
                     style: const TextStyle(
                       color: Colors.white,
+                      fontSize: 14,
                     )),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(
+              const SizedBox(
+                width: 5,
+              ),
+              Text(
                 Jiffy(messageDate.toLocal()).jm,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors.white54,
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

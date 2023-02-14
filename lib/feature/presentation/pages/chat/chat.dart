@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: ListView.builder(
               reverse: true,
-              padding: EdgeInsets.only(top: 5, left: 5, right: 5),
+              padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
               itemBuilder: (_, index) {
                 late String dayInfo;
                 final createdAt = Jiffy(DateTime.now());
@@ -82,10 +82,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         decoration: BoxDecoration(
                             color: Colors.white10,
-                            borderRadius: BorderRadius.circular(20)),
+                            borderRadius: BorderRadius.circular(15)),
                         child: Text(
                           dayInfo,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 12),
                         ),
                       ),
                     messageThread[index].isMyMessage
@@ -130,6 +130,46 @@ List<Message> messageThread = [
       time: DateTime.now()),
   Message(isMyMessage: true, message: "hello", time: DateTime.now()),
   Message(isMyMessage: false, message: "hello", time: DateTime.now()),
+  Message(
+      isMyMessage: true,
+      message:
+          "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: false,
+      message:
+          "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: true,
+      message:
+          "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: false,
+      message:
+          "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: true,
+      message:
+          "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: false,
+      message:
+          "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: true,
+      message:
+          "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
+      time: DateTime.now()),
+  Message(
+      isMyMessage: false,
+      message:
+          "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
+      time: DateTime.now()),
   Message(
       isMyMessage: true,
       message: "helajshdkjas dasdhiuad ashjdtaidgkjslo",

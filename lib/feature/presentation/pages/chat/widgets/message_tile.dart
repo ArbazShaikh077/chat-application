@@ -19,37 +19,37 @@ class MessageTile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, right: 40),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(_borderRadius),
-                  topRight: Radius.circular(_borderRadius),
-                  bottomRight: Radius.circular(_borderRadius),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
-                child: Text(message),
-              ),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white10,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(_borderRadius),
+              topRight: Radius.circular(_borderRadius),
+              bottomRight: Radius.circular(_borderRadius),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Flexible(
+                  child: Text(
+                message,
+                style: const TextStyle(color: Colors.white, fontSize: 14),
+              )),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(
                 Jiffy(messageDate.toLocal()).jm,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors.white38,
                   fontSize: 10,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
