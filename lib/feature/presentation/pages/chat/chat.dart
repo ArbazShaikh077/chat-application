@@ -21,8 +21,8 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.white10,
         title: Row(
           children: [
-            CircleAvatar(),
-            SizedBox(
+            const CircleAvatar(),
+            const SizedBox(
               width: 10,
             ),
             Column(
@@ -32,7 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   "Name goes here...",
                   style: TextStyle(fontSize: 15),
                 ),
-                Text(
+                const Text(
                   'Status goes here..',
                   style: TextStyle(fontSize: 10),
                 )

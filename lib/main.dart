@@ -1,7 +1,9 @@
+import 'package:chat_application/core/service/chat_client.dart';
 import 'package:chat_application/feature/presentation/pages/login/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  ChatClient().connectUser();
   runApp(const MyApp());
 }
 
