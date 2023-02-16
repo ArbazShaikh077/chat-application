@@ -1,8 +1,8 @@
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class ChatClient {
+  final client = StreamChatClient('client-token');
   Future<void> connectUser() async {
-    final client = StreamChatClient('client-token');
     await client.connectUser(
       User(
         id: 'cool-shadow-7',

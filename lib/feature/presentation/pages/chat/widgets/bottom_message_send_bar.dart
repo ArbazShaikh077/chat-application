@@ -56,7 +56,7 @@ class __ActionBarState extends State<BottomMessageSendBar> {
             ),
             IconButton(
               color: Colors.white,
-              icon: Icon(Icons.send_rounded),
+              icon: const Icon(Icons.send_rounded),
               onPressed: _sendMessage,
             ),
           ],

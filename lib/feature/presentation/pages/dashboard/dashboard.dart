@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:chat_application/feature/presentation/pages/chat/chat.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +16,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
-        title: Text(
+        title: const Text(
           'Chat Application',
           style: TextStyle(color: Colors.white),
         ),
@@ -28,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
           ListTile(
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => ChatScreen()));
+                  .push(MaterialPageRoute(builder: (_) => const ChatScreen()));
             },
             tileColor: Colors.white10,
             leading: ClipOval(
@@ -39,31 +37,32 @@ class _DashboardState extends State<Dashboard> {
             ),
             title: Text(
               'Chat - Name $index',
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             subtitle: Text(
               "Long long message for the chat message $index ajsd akjsdh akdak djsakgd d askdh akdjh asdaj dhkajdhkja dskjahs ",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             trailing: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   'Jan 23',
                   style: TextStyle(color: Colors.white30),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(122, 11, 192, 1.0),
+                    color: const Color.fromRGBO(122, 11, 192, 1.0),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
+                  child: const Text(
                     '123',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -71,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
         ]);

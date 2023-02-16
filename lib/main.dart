@@ -1,10 +1,11 @@
 import 'package:chat_application/core/service/chat_client.dart';
 import 'package:chat_application/feature/presentation/pages/login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
-void main() {
-  ChatClient().connectUser();
-  runApp(const MyApp());
+void main() async {
+  await ChatClient().connectUser();
+  runApp(StreamChatCore(client: ChatClient().client, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

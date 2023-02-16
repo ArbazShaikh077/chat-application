@@ -28,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Name goes here...",
                   style: TextStyle(fontSize: 15),
                 ),
@@ -41,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ],
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_sharp))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_sharp))
         ],
       ),
       body: Column(
@@ -49,7 +49,8 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: ListView.builder(
               reverse: true,
-              padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
+              padding:
+                  const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
               itemBuilder: (_, index) {
                 late String dayInfo;
                 final createdAt = Jiffy(DateTime.now());
@@ -78,14 +79,15 @@ class _ChatScreenState extends State<ChatScreen> {
                         messageThread[index].time.day !=
                             messageThread[index + 1].time.day)
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
                         decoration: BoxDecoration(
                             color: Colors.white10,
                             borderRadius: BorderRadius.circular(15)),
                         child: Text(
                           dayInfo,
-                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 12),
                         ),
                       ),
                     messageThread[index].isMyMessage
