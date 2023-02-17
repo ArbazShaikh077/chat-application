@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 void main() async {
-  await ChatClient().connectUser();
-  runApp(StreamChatCore(client: ChatClient().client, child: const MyApp()));
+  final client = ChatClient();
+  await client.connectUser();
+  runApp(StreamChatCore(client: client.client, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

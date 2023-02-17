@@ -110,76 +110,76 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-List<Message> messageThread = [
-  Message(
+List<CustomMessage> messageThread = [
+  CustomMessage(
       isMyMessage: true,
       message:
           "hello agjd asjd gadgaashgdd asdga jdgakjgdkagd adajgdkjagdkja dagd jagdkjg as",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message: "hello  aksjgda dkjagd kasgdkads asdjgak sdasd agda ",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: true,
       message:
           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message:
           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
       time: DateTime.now()),
-  Message(isMyMessage: true, message: "hello", time: DateTime.now()),
-  Message(isMyMessage: false, message: "hello", time: DateTime.now()),
-  Message(
+  CustomMessage(isMyMessage: true, message: "hello", time: DateTime.now()),
+  CustomMessage(isMyMessage: false, message: "hello", time: DateTime.now()),
+  CustomMessage(
       isMyMessage: true,
       message:
           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message:
           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: true,
       message:
           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message:
           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: true,
       message:
           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message:
           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: true,
       message:
           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: false,
       message:
           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
       time: DateTime.now()),
-  Message(
+  CustomMessage(
       isMyMessage: true,
       message: "helajshdkjas dasdhiuad ashjdtaidgkjslo",
       time: DateTime.now()),
 ];
 
-class Message {
-  Message({this.message, required this.isMyMessage, required this.time});
+class CustomMessage {
+  CustomMessage({this.message, required this.isMyMessage, required this.time});
 
   final bool isMyMessage;
   final String? message;
