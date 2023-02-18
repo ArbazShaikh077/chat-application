@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class BottomMessageSendBar extends StatefulWidget {
-  const BottomMessageSendBar({Key? key}) : super(key: key);
+  const BottomMessageSendBar({Key? key, required this.channel})
+      : super(key: key);
+  final Channel channel;
 
   @override
   State<BottomMessageSendBar> createState() => __ActionBarState();
@@ -11,7 +14,15 @@ class BottomMessageSendBar extends StatefulWidget {
 class __ActionBarState extends State<BottomMessageSendBar> {
   final TextEditingController controller = TextEditingController();
 
-  Future<void> _sendMessage() async {}
+  Future<void> _sendMessage() async {
+    if (controller.text.isNotEmpty) {
+      StreamChannel.of(context)
+          .channel
+          .sendMessage(Message(text: controller.text));
+      controller.clear();
+      FocusScope.of(context).unfocus();
+    }
+  }
 
   @override
   void dispose() {

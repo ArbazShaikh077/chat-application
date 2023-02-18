@@ -5,7 +5,7 @@ import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 void main() async {
   final client = ChatClient();
-  await client.connectUser();
+
   runApp(StreamChatCore(client: client.client, child: const MyApp()));
 }
 

@@ -1,5 +1,5 @@
-import 'package:chat_application/feature/presentation/pages/dashboard/dashboard.dart';
 import 'package:chat_application/feature/presentation/pages/login/widgets/animated_button.dart';
+import 'package:chat_application/user_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rive/rive.dart';
@@ -102,8 +102,8 @@ class _SignInFormState extends State<SignInForm> {
               btnAnimationController: _btnAnimationController,
               press: () {
                 _btnAnimationController.isActive = true;
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => const Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const UserSelection()));
               },
             ),
             const SizedBox(
