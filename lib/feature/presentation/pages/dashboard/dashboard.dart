@@ -1,6 +1,6 @@
+import 'package:chat_application/core/utils/stream_chat_helper.dart';
 import 'package:chat_application/feature/presentation/pages/chat/chat.dart';
 import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class Dashboard extends StatefulWidget {
@@ -89,7 +89,8 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                                 title: Text(
-                                  getChannelName(channels[index],
+                                  StreamChatHelper().getChannelName(
+                                      channels[index],
                                       StreamChatCore.of(context).currentUser!),
                                   style: const TextStyle(color: Colors.white),
                                 ),
@@ -126,44 +127,15 @@ class _DashboardState extends State<Dashboard> {
                                         initialData:
                                             channels[index].lastMessageAt,
                                         builder: (_, data) {
-                                          final lastMessageAt = data.toLocal();
-                                          String stringDate;
-                                          final now = DateTime.now();
-
-                                          final startOfDay = DateTime(
-                                              now.year, now.month, now.day);
-
-                                          if (lastMessageAt
-                                                  .millisecondsSinceEpoch >=
-                                              startOfDay
-                                                  .millisecondsSinceEpoch) {
-                                            stringDate =
-                                                Jiffy(lastMessageAt.toLocal())
-                                                    .jm;
-                                          } else if (lastMessageAt
-                                                  .millisecondsSinceEpoch >=
-                                              startOfDay
-                                                  .subtract(
-                                                      const Duration(days: 1))
-                                                  .millisecondsSinceEpoch) {
-                                            stringDate = 'YESTERDAY';
-                                          } else if (startOfDay
-                                                  .difference(lastMessageAt)
-                                                  .inDays <
-                                              7) {
-                                            stringDate =
-                                                Jiffy(lastMessageAt.toLocal())
-                                                    .EEEE;
-                                          } else {
-                                            stringDate =
-                                                Jiffy(lastMessageAt.toLocal())
-                                                    .yMd;
-                                          }
+                                          final String messageTime =
+                                              StreamChatHelper()
+                                                  .lastMessageTime(
+                                                      data.toLocal());
                                           return Text(
-                                            stringDate,
+                                            messageTime,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white30),
                                           );
                                         }),
@@ -180,7 +152,7 @@ class _DashboardState extends State<Dashboard> {
                                             0,
                                         builder: (_, snapshot) {
                                           if (snapshot == 0) {
-                                            return SizedBox.shrink();
+                                            return const SizedBox.shrink();
                                           }
                                           return Container(
                                             padding: const EdgeInsets.symmetric(
@@ -227,25 +199,5 @@ class _DashboardState extends State<Dashboard> {
         },
       ),
     );
-  }
-}
-
-String getChannelName(Channel channel, User currentUser) {
-  if (channel.name != null) {
-    return channel.name!;
-  } else if (channel.state?.members.isNotEmpty ?? false) {
-    final otherMembers = channel.state?.members
-        .where(
-          (element) => element.userId != currentUser.id,
-        )
-        .toList();
-
-    if (otherMembers?.length == 1) {
-      return otherMembers!.first.user?.name ?? 'No name';
-    } else {
-      return 'Multiple users';
-    }
-  } else {
-    return 'No Channel Name';
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chat_application/core/utils/stream_chat_helper.dart';
 import 'package:chat_application/feature/presentation/pages/chat/widgets/bottom_message_send_bar.dart';
 import 'package:chat_application/feature/presentation/pages/chat/widgets/message_own_tile.dart';
 import 'package:chat_application/feature/presentation/pages/chat/widgets/message_tile.dart';
@@ -55,12 +56,12 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Name goes here...",
                   style: TextStyle(fontSize: 15),
                 ),
-                const Text(
+                Text(
                   'Status goes here..',
                   style: TextStyle(fontSize: 10),
                 )
@@ -80,7 +81,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 return const Center(child: CircularProgressIndicator());
               },
               emptyBuilder: (context) => const SizedBox.shrink(),
-              errorBuilder: (context, error) => Center(
+              errorBuilder: (context, error) => const Center(
                   child: Text(
                 "error",
                 style: TextStyle(color: Colors.white),
@@ -90,27 +91,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 padding:
                     const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
                 itemBuilder: (_, index) {
-                  late String dayInfo;
-                  final createdAt = Jiffy(DateTime.now());
-                  final now = DateTime.now();
-                  if (Jiffy(createdAt).isSame(now, Units.DAY)) {
-                    dayInfo = 'TODAY';
-                  } else if (Jiffy(createdAt).isSame(
-                      now.subtract(const Duration(days: 1)), Units.DAY)) {
-                    dayInfo = 'YESTERDAY';
-                  } else if (Jiffy(createdAt).isAfter(
-                    now.subtract(const Duration(days: 7)),
-                    Units.DAY,
-                  )) {
-                    dayInfo = createdAt.EEEE;
-                  } else if (Jiffy(createdAt).isAfter(
-                    Jiffy(now).subtract(years: 1),
-                    Units.DAY,
-                  )) {
-                    dayInfo = createdAt.MMMd;
-                  } else {
-                    dayInfo = createdAt.MMMd;
-                  }
+                  final messageTitle = StreamChatHelper().getChatMessageTitle(
+                      messageCreatedAt: messages[index].createdAt);
                   return Column(
                     children: [
                       if (index == messages.length - 1 ||
@@ -123,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               color: Colors.white10,
                               borderRadius: BorderRadius.circular(15)),
                           child: Text(
-                            dayInfo,
+                            messageTitle,
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 12),
                           ),
@@ -150,80 +132,4 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
     );
   }
-}
-
-// List<CustomMessage> messageThread = [
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hello agjd asjd gadgaashgdd asdga jdgakjgdkagd adajgdkjagdkja dagd jagdkjg as",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message: "hello  aksjgda dkjagd kasgdkads asdjgak sdasd agda ",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message:
-//           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
-//       time: DateTime.now()),
-//   CustomMessage(isMyMessage: true, message: "hello", time: DateTime.now()),
-//   CustomMessage(isMyMessage: false, message: "hello", time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message:
-//           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message:
-//           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message:
-//           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message:
-//           "hellasdh kad akjdg kajdga jdg  askjdhakj daksdhjka sdagdas dsjsdkaso",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: false,
-//       message:
-//           "helas dkasjhdkja dakjsdhjkas dakdhkjashdka dasjd gaudt iahdlkahfu tuiafnsagfuisafhaskjfgk s lo",
-//       time: DateTime.now()),
-//   CustomMessage(
-//       isMyMessage: true,
-//       message: "helajshdkjas dasdhiuad ashjdtaidgkjslo",
-//       time: DateTime.now()),
-// ];
-
-class CustomMessage {
-  CustomMessage({this.message, required this.isMyMessage, required this.time});
-
-  final bool isMyMessage;
-  final String? message;
-  final DateTime time;
 }
