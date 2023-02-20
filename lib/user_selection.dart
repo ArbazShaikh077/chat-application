@@ -9,13 +9,15 @@ class UserSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User selection'),
+        title: const Text('User selection'),
       ),
       body: ListView.builder(
           itemCount: userList.length,
           itemBuilder: (_, index) => ListTile(
                 title: Text(userList[index].name ?? "Name"),
                 onTap: () async {
+                  NavigatorState nav = Navigator.of(context);
+                  StreamChatCoreState stream = StreamChatCore.of(context);
                   await StreamChatCore.of(context).client.connectUser(
                       User(
                           id: userList[index].userId ?? "id",
@@ -24,17 +26,17 @@ class UserSelection extends StatelessWidget {
                           .client
                           .devToken(userList[index].userId ?? 'userId')
                           .rawValue);
-                  Channel state = await StreamChatCore.of(context)
-                      .client
-                      .channel('messaging', extraData: {
+                  Channel state =
+                      stream.client.channel('messaging', extraData: {
                     'members': [
                       userList[index].userId,
                       userList[index].userId == 'arbaz' ? 'aamir' : 'arbaz'
                     ]
                   });
-                  state.watch();
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Dashboard()));
+                  await state.watch();
+
+                  nav.push(
+                      MaterialPageRoute(builder: (_) => const Dashboard()));
                 },
               )),
     );
